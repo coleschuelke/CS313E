@@ -31,13 +31,23 @@ def sum_adjacent_numbers(spiral, n):
 
 import math
 
+def print_spiral(spiral):
+    for row in range(len(spiral)):
+        for col in range(len(spiral)):
+            print(spiral[row][col], end="")
+            space = " " * (8 - len(str(spiral[row][col])))
+            print(space, end="")
+        print("\n")
+    print()
+        
+
 
 def create_spiral(dim):
     """Creates a Spiral given a dimension for the spiral dimeter"""
     side_length = 1
     mid = math.floor(dim/2)
     ring = 0
-    forward = True
+    # forward = True
     num_to_add = 3
 
     
@@ -45,22 +55,24 @@ def create_spiral(dim):
     spiral = [0] * dim
     for i in range(dim):
         spiral[i] = [0] * dim
-    print(spiral)
+    print_spiral(spiral)
 
     if dim == 1:
         spiral[0][0] = 1
     else:
         spiral[mid][mid] = 1
-        spiral[mid][mid+1] = 2
+        spiral[mid+1][mid] = 2
+        print_spiral(spiral)
         while num_to_add < dim ** 2:
             # bottom
-            for col in range(mid+ring+1, mid+ring-side_length+1):
-                spiral[mid-ring+1][col] = num_to_add
+            for col in range(mid+ring, mid+ring-side_length, -1):
+                spiral[mid-ring][col] = num_to_add
                 num_to_add +=1
+                print_spiral(spiral)
 
             # left
             for row in range(mid-ring, mid-ring+side_length):
-                spiral[row][mid-ring] = num_to_add
+                spiral[row+1][mid-ring] = num_to_add
                 num_to_add +=1
 
             side_length +=1
@@ -71,14 +83,13 @@ def create_spiral(dim):
                 num_to_add +=1
 
             # right
-            for row in range(mid+ring, mid+ring-side_length):
+            for row in range(mid+ring, mid+ring-side_length, -1):
                 spiral[row][mid+ring+1] = num_to_add
                 num_to_add += 1
-                print("left")
 
             side_length +=1
             ring +=1
-            print(spiral)
+            print_spiral(spiral)
             print(f"made it to ring {ring}")
 
         print(spiral)
@@ -103,6 +114,9 @@ def sum_sub_grid(grid, val):
     surrounding the parameter val in the grid
     if val is out of bounds, returns 0
     """
+
+    # I think it should just iterate over the rows or columns, then check all the sides
+    # set some row and column parameters and an if statement that checks if it's valid 
     
     # ADD YOUR CODE HERE  
 
