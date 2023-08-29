@@ -68,15 +68,15 @@ def create_spiral(dim):
             for col in range(mid+ring, mid+ring-side_length, -1):
                 if num_to_add > dim ** 2:
                     break
-                spiral[mid-ring][col] = num_to_add
+                spiral[mid+ring][col] = num_to_add
                 num_to_add +=1
                 print_spiral(spiral)
 
             # left
-            for row in range(mid-ring-1, mid-ring+side_length-1):
+            for row in range(mid+ring+1, mid+ring-side_length+1, -1):
                 if num_to_add > dim ** 2:
                     break
-                spiral[row+1][mid-ring] = num_to_add
+                spiral[row-1][mid-ring] = num_to_add
                 num_to_add +=1
 
             side_length +=1
@@ -85,11 +85,11 @@ def create_spiral(dim):
             for col in range(mid-ring, mid-ring+side_length):
                 if num_to_add > dim ** 2:
                     break
-                spiral[mid+ring][col] = num_to_add
+                spiral[mid-ring][col] = num_to_add
                 num_to_add +=1
 
             # right
-            for row in range(mid+ring, mid+ring-side_length, -1):
+            for row in range(mid-ring, mid-ring+side_length):
                 if num_to_add > dim ** 2:
                     break
                 spiral[row][mid+ring+1] = num_to_add
