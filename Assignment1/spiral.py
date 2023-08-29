@@ -44,9 +44,9 @@ def print_spiral(spiral):
 
 def create_spiral(dim):
     """Creates a Spiral given a dimension for the spiral dimeter"""
-    side_length = 1
+    side_length = 2
     mid = math.floor(dim/2)
-    ring = 0
+    ring = 1
     # forward = True
     num_to_add = 3
 
@@ -61,17 +61,21 @@ def create_spiral(dim):
         spiral[0][0] = 1
     else:
         spiral[mid][mid] = 1
-        spiral[mid+1][mid] = 2
+        spiral[mid][mid+1] = 2
         print_spiral(spiral)
-        while num_to_add < dim ** 2:
+        while True :
             # bottom
             for col in range(mid+ring, mid+ring-side_length, -1):
+                if num_to_add > dim ** 2:
+                    break
                 spiral[mid-ring][col] = num_to_add
                 num_to_add +=1
                 print_spiral(spiral)
 
             # left
-            for row in range(mid-ring, mid-ring+side_length):
+            for row in range(mid-ring-1, mid-ring+side_length-1):
+                if num_to_add > dim ** 2:
+                    break
                 spiral[row+1][mid-ring] = num_to_add
                 num_to_add +=1
 
@@ -79,19 +83,26 @@ def create_spiral(dim):
 
             # top
             for col in range(mid-ring, mid-ring+side_length):
+                if num_to_add > dim ** 2:
+                    break
                 spiral[mid+ring][col] = num_to_add
                 num_to_add +=1
 
             # right
             for row in range(mid+ring, mid+ring-side_length, -1):
+                if num_to_add > dim ** 2:
+                    break
                 spiral[row][mid+ring+1] = num_to_add
                 num_to_add += 1
+
+            if num_to_add > dim ** 2:
+                    break
 
             side_length +=1
             ring +=1
             print_spiral(spiral)
             print(f"made it to ring {ring}")
-
+        print_spiral(spiral)
         print(spiral)
 
 
