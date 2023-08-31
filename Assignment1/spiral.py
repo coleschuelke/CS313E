@@ -97,7 +97,7 @@ def create_spiral(dim):
                 num_to_add += 1
 
             if num_to_add > dim ** 2:
-                    break
+                break
 
             side_length +=1
             ring +=1
@@ -124,8 +124,8 @@ def sum_sub_grid(grid, val):
     lower = -1
     left = -1
     right = 2
-    # if val > dim ** 2:
-    #     return 0
+    if val > dim ** 2:
+        return 0
 
     # find the index of val
     index = (0, 0)
@@ -133,8 +133,6 @@ def sum_sub_grid(grid, val):
         for j in range(dim):
             if grid[i][j] == val:
                 index = (i,j)
-
-    print(index)
 
     # check for edge cases
     if index[0] == 0:
@@ -146,15 +144,15 @@ def sum_sub_grid(grid, val):
     if index[1] == dim-1:
         right = 1
 
-    sum = 0
+    sum_surround = 0
 
     # sum up the block of numbers
     for i in range(lower, upper): # rows
         for j in range(left, right): # cols
-            sum += grid[index[0]+i][index[1]+j]
+            sum_surround += grid[index[0]+i][index[1]+j]
     # don't include the number itself in the tally
-    sum -= val
-    return sum  
+    sum_surround -= val
+    return sum_surround
 
 
 
