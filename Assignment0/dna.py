@@ -1,6 +1,16 @@
-"""
-DNA
-"""
+# File: dna.py 
+# Description : 
+# Student Name:
+# Student UT EID: 
+# Partner Name:
+# Partner UT EID:
+# Course Name: CS 313E
+# Unique Number :
+# Date Created :
+# Date Last Modified :
+# Input : s1 and s2 are two strings that represent strands of DNA
+# Output: returns a sorted list of substrings that are the longest # common subsequence. The list is empty if there are no
+#         common subsequences .
 
 
 def longest_subsequence(string_1, string_2):
