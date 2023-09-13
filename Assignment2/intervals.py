@@ -73,7 +73,7 @@ def sort_by_interval_size (tuples_list):
     
 
 
-    return tuples_list # Replace this.
+    return tuples_list
 
 
 
