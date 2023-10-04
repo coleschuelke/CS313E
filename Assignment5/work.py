@@ -1,3 +1,19 @@
+"""
+  File: work.py
+  Description: A comparison between linear and binary search
+
+  Student Name: Quentin Schuelke
+  Student UT EID: qcs86 
+
+  Partner Name: Daniela Cordon
+  Partner UT EID: dc47324
+
+  Course Name: CS 313E
+  Unique Number: 52590
+  Date Created: 09/11/23
+  Date Last Modified: 09//23
+"""
+
 import sys
 import time
 # Input: v an integer representing the minimum lines of code and
@@ -7,13 +23,13 @@ import time
 def sum_series (v, k):
     term = v
     power = 1
-    sum = term
-    while term > 1e-10:
+    series_sum = term
+    while term > 0:
         term = v//(k**power)
-        sum += term
+        series_sum += term
         power += 1
 
-    return sum
+    return series_sum
 
 
 
@@ -25,10 +41,10 @@ def sum_series (v, k):
 # Output: returns v the minimum lines of code to write using linear search
 def linear_search (n, k):
     v = 0
-    sum = 0
+    series_sum = 0
 
-    while sum < n:
-        sum = sum_series(v, k)
+    while series_sum < n:
+        series_sum = sum_series(v, k)
         v += 1
 
     return v - 1
@@ -46,7 +62,7 @@ def binary_search (n, k):
     while lo < hi - 1:
         mid = (lo + hi) // 2
 
-        if sum_series(mid, k) <= n:
+        if sum_series(mid, k) < n:
             lo = mid
         else:
             hi = mid
